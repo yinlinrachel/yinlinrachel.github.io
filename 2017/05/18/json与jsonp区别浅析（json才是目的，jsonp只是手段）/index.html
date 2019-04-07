@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>json与jsonp区别浅析 | yinlinRachel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="前端标签： 干货 json与jsonp区别浅析（json才是目的，jsonp只是手段）一言以蔽之，json返回的是一串数据；而jsonp返回的是脚本代码（包含一个函数调用）； JSON其实就是JavaScript中的一个对象，跟var obj={}在质上完全一样，只是在量上可以无限扩展。简单地讲，json其实就是JavaScript中的对象(Object)和数组(Array，其实也是对象)这倆好基">
+<meta name="keywords" content="前端,js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="json与jsonp区别浅析">
+<meta property="og:url" content="http://yoursite.com/2017/05/18/json与jsonp区别浅析（json才是目的，jsonp只是手段）/index.html">
+<meta property="og:site_name" content="yinlinRachel">
+<meta property="og:description" content="前端标签： 干货 json与jsonp区别浅析（json才是目的，jsonp只是手段）一言以蔽之，json返回的是一串数据；而jsonp返回的是脚本代码（包含一个函数调用）； JSON其实就是JavaScript中的一个对象，跟var obj={}在质上完全一样，只是在量上可以无限扩展。简单地讲，json其实就是JavaScript中的对象(Object)和数组(Array，其实也是对象)这倆好基">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:image" content="http://common.cnblogs.com/images/copycode.gif">
+<meta property="og:updated_time" content="2019-04-06T05:27:56.834Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="json与jsonp区别浅析">
+<meta name="twitter:description" content="前端标签： 干货 json与jsonp区别浅析（json才是目的，jsonp只是手段）一言以蔽之，json返回的是一串数据；而jsonp返回的是脚本代码（包含一个函数调用）； JSON其实就是JavaScript中的一个对象，跟var obj={}在质上完全一样，只是在量上可以无限扩展。简单地讲，json其实就是JavaScript中的对象(Object)和数组(Array，其实也是对象)这倆好基">
+<meta name="twitter:image" content="http://common.cnblogs.com/images/copycode.gif">
+  
+    <link rel="alternate" href="/atom.xml" title="yinlinRachel" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-json与jsonp区别浅析（json才是目的，jsonp只是手段）" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      json与jsonp区别浅析
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2017/05/18/json与jsonp区别浅析（json才是目的，jsonp只是手段）/" class="article-date">
+  <time datetime="2017-05-18T01:17:00.000Z" itemprop="datePublished">2017-05-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程/">编程</a>►<a class="article-category-link" href="/categories/编程/前端/">前端</a>
+  </div>
+
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h1 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h1><p>标签： 干货</p>
+<h1 id="json与jsonp区别浅析（json才是目的，jsonp只是手段）"><a href="#json与jsonp区别浅析（json才是目的，jsonp只是手段）" class="headerlink" title="json与jsonp区别浅析（json才是目的，jsonp只是手段）"></a><a href="http://www.cnblogs.com/iovec/p/5312464.html" target="_blank" rel="noopener">json与jsonp区别浅析（json才是目的，jsonp只是手段）</a></h1><p>一言以蔽之，json返回的是一串数据；而jsonp返回的是脚本代码（包含一个函数调用）；</p>
+<p>JSON其实就是JavaScript中的一个对象，跟var obj={}在质上完全一样，只是在量上可以无限扩展。简单地讲，json其实就是JavaScript中的对象(Object)和数组(Array，其实也是对象)这倆好基友在那儿你嵌我我嵌你地套上n多层，以此模拟出许多复杂的数据结构。</p>
+<p>json易于人阅读和编写，也易于机器解析和生成，相对网络传输速率较高，功能型网站前后端往往要频繁大量交换数据，而json凭借其强大的表现力和高颜值渐渐地成为理想的前后端数据交换语言。那xml前辈呢，我觉得应该会像微软的xp那样功成身退。</p>
+<p>同源（不懂同源策略的童鞋请自行百度）下的前后端数据交换格式确定使用json了，那么问题来了，如果我想获取别人网站上提供的数据肿么做到呢？也就是跨域读取数据问题（不要钻牛角说你不需要读取其他网站的数据，相信我，你早晚得需要），json行不行呢？答案是No Way，为什么呢，因为json只是普通的文本格式，能让你这样就轻松拿到那服务端就没有任何安全和保密性可言了，这样的话互联网世界非乱套不可，这个问题那些牛X的规范制定者早就想到了，所以使用了同源策略来限制文件获取。最后的结果就是只有像img、script、iframe这类可以指定src属性的标签有跨域获取别人网站上数据（图片，脚本，源文件其实都是数据）的能力。比如：</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--京东商品图片--&gt;</span><br><span class="line">&lt;img src=&quot;http://img30.360buyimg.com/jgsq-productsoa/jfs/t2407/323/1635505465/47386/f2d89d88/56615e00N7a475ee6.jpg&quot; /&gt;</span><br><span class="line">&lt;!--百度CDN--&gt;</span><br><span class="line">&lt;script src=&quot;http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></div>
+<p>看来直接获取json是行不通了，那有没有其他方法能拿到数据呢？于是乎jsonp就这样被聪明的开发者给发现了，为什么说是发现而不是发明呢，因为并没有涉及到任何新技术，就像发现ajax一样。</p>
+<p>jsonp原理是这样的，网站A需要获取网站B的数据，网站B说我给你们一个方法，【1. 你们使用<script src="http://www.B.com/open.js"></script>标签先获取到open.js文件（网站B的责任），这里边有你们需要的数据。2. 你们获取数据后处理数据（总得处理数据吧）的方法名必须命名为foo（数据请求者的责任和义务）】，这里相当于B网站和请求获取数据者之间建立了一个协议，要求请求者务必按照规则办事，如果请求者不能同时遵守上面两条就不能按预期获取数据。额..，这也算相当于建立了一个潜规则吧</p>
+<p>open.js内容</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">foo(&#123;&quot;name&quot;:&quot;B&quot;,&quot;age&quot;:23&#125;);　　//为什么不直接写成json数据&#123;&quot;name&quot;:&quot;B&quot;,&quot;age&quot;:23&#125;呢，原因很简单，在js文件总得合乎js语法吧</span><br><span class="line">//这也是为什么协议中明确规定处理数据的方法名必须命名为foo，因为B网站是在假定请求者的脚本中已经定义了数据处理方法foo的情况下返回数据；</span><br><span class="line">//不然就会报foo is not defined错误</span><br></pre></td></tr></table></figure></div>
+<p>网站A脚本须有</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function foo(data)&#123;</span><br><span class="line">    console.log(data);</span><br><span class="line">    //ToDo..  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+<p>啊！虽然拐了个弯，但数据总算得到了，网站A，网站B都非常高兴，那么问题又来了，网站C说也需要获取网站B的数据，网站B把协议甩给它，网站C拿过来一看，草泥马啊，foo这个名字已经在自己的脚本文件的6868行用过了，而且已经使用在脚本的各个角落，批量替换会导致很多潜在bug啊，网站B情急之下决定把foo改成fool，网站A立马蹦起来，因为自己的网站已经在很多地方使用foo引用了数据。</p>
+<p>为了避免上面情况发生，那些牛X哄哄的开发者使用了动态生成js文件的方法，php版本如下：</p>
+<p>open.php</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">header(&apos;Content-type: application/javascript&apos;);</span><br><span class="line">$jsonCallback = htmlspecialchars($_REQUEST [&apos;callback&apos;]);    //获取请求者自定义的回调函数名</span><br><span class="line">$jsonData =&apos;&#123;&quot;name&quot;:&quot;B&quot;,&quot;age&quot;:23&#125;&apos;;    //待返回的json数据</span><br><span class="line">echo $jsonCallback . &quot;(&quot; . $jsonData . &quot;)&quot;;    //输出jsonp格式的数据，即一行函数调用语句</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure></div>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>额 ..，至于php为什么能返回js格式文件，自行百度。<br>于是网站A用<script src="http://www.B.com/open.php?callback=foo"></script>来请求数据，不需要修改任何变量，返回给A的脚本文件内容是： </p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">foo(&#123;&quot;name&quot;:&quot;B&quot;,&quot;age&quot;:23&#125;);  //所谓的jsonp，就是一句函数调用，数据都被包裹传递到参数中了，千万别穿个马甲就不认识了</span><br></pre></td></tr></table></figure></div>
+<p>网站C就用<script src="http://www.B.com/open.php?callback=blah"></script>来请求数据，返回给C的脚本文件内容是：</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">blah(&#123;&quot;name&quot;:&quot;B&quot;,&quot;age&quot;:23&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>网站N就用<script src="http://www.B.com/open.php?callback=what"></script>来请求数据，返回给N的脚本文件内容是：</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">what(&#123;&quot;name&quot;:&quot;B&quot;,&quot;age&quot;:23&#125;);</span><br></pre></td></tr></table></figure></div>
+<p>Problem Solved，大家都取到了期望的数据，并且避免了命名冲突。</p>
+<p>jsonp全名叫做json with padding，很形象，就是把json对象用符合js语法的形式包裹起来以使其它网站可以请求得到，也就是将json数据封装成js文件；</p>
+<p>json是理想的数据交换格式，但没办法跨域直接获取，于是就将json包裹(padding)在一个合法的js语句中作为js文件传过去。这就是json和jsonp的区别，json是想要的东西，jsonp是达到这个目的而普遍采用的一种方法，当然最终获得和处理的还是json。所以说json是目的，jsonp只是手段。json总会用到，而jsonp只有在跨域获取数据才会用到。</p>
+<p>理解了json和jsonp的区别之后，其实ajax里的跨域获取数据就很好理解和实现了，同源时候并没有什么特别的，直接取就行，跨域时候需要拐个弯来达到目的。</p>
+<p>附上jquery中ajax请求json数据实例：</p>
+<p>（同源）：</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url:&quot;persons.json&quot;,</span><br><span class="line">    success:function(data)&#123;</span><br><span class="line">　　　　console.log(data);</span><br><span class="line">　　 　 //ToDo..</span><br><span class="line">　 &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>（跨域）</p>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url:&quot;http://www.B.com/open.php?callback=?&quot;,</span><br><span class="line">    dataType:&quot;jsonp&quot;,</span><br><span class="line">    success:function(data)&#123;</span><br><span class="line">        console.log(data);</span><br><span class="line">        //ToDo..</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></div>
+<p><a href="javascript:void(0" target="_blank" rel="noopener"><img src="http://common.cnblogs.com/images/copycode.gif" alt="复制代码"></a>;)</p>
+<p>jquery已把jsonp封装进ajax，很合理，因为毕竟绝大多数的jsonp请求都是ajax，关于jquery的ajax具体用法请自行百度，另外要注意的一点就是不同的网站提供的数据接口的$_REQUEST [‘callback’]中不一定绝对是callback也可能是cb,cbk等，具体使用时务必阅读服务端提供的有关接口使用的详细文档。</p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2017/06/08/这一次，彻底弄懂 JavaScript 执行机制/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            js执行机制
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2017/05/14/JavaScript 实用技巧和写法建议/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">JavaScript 实用技巧和写法建议</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="图片来自网络">
+    <h3 class="avatar-name">
+      
+        一路烟霞
+      
+    </h3>
+    <p class="avatar-slogan">
+      特别耐撕的小前端，资深的打酱油攻城狮。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Configuration/">Configuration</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools-config-windows/">Tools, config, windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/css/编程/">编程</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css/">前端, css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-干货/">前端, css, 干货</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-编程/">前端, css, 编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-编程-js/">前端, css, 编程, js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-编程/">前端, 编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-编程/">前端,css,编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-js/">前端,js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/css/前端/">前端</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/开源/">开源</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/">编程</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数码/">数码</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数码/技术/">技术</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/爱情句子/">爱情句子</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/前端/跨域/">跨域</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/算法/">算法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程-前端/">编程, 前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/面试/编程/">编程</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Config/">Config</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/">Html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming/">Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools/">Tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/云计算/">云计算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人际关系/">人际关系</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/句子/">句子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/干货/">干货</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开源/">开源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/情商/">情商</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/手机/">手机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作/">操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数码/">数码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爱情/">爱情</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/电脑/">电脑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/美化/">美化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计/">设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Config/" style="font-size: 18px;">Config</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/JavaScript/" style="font-size: 11px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 11px;">Linux</a> <a href="/tags/Programming/" style="font-size: 14px;">Programming</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/tags/css/" style="font-size: 17px;">css</a> <a href="/tags/html/" style="font-size: 11px;">html</a> <a href="/tags/js/" style="font-size: 16px;">js</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/云计算/" style="font-size: 10px;">云计算</a> <a href="/tags/人际关系/" style="font-size: 10px;">人际关系</a> <a href="/tags/优化/" style="font-size: 11px;">优化</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a> <a href="/tags/句子/" style="font-size: 10px;">句子</a> <a href="/tags/工具/" style="font-size: 11px;">工具</a> <a href="/tags/干货/" style="font-size: 10px;">干货</a> <a href="/tags/开源/" style="font-size: 10px;">开源</a> <a href="/tags/情商/" style="font-size: 10px;">情商</a> <a href="/tags/手机/" style="font-size: 10px;">手机</a> <a href="/tags/技巧/" style="font-size: 11px;">技巧</a> <a href="/tags/技术/" style="font-size: 12px;">技术</a> <a href="/tags/操作/" style="font-size: 10px;">操作</a> <a href="/tags/操作系统/" style="font-size: 11px;">操作系统</a> <a href="/tags/数码/" style="font-size: 10px;">数码</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/爱情/" style="font-size: 10px;">爱情</a> <a href="/tags/电脑/" style="font-size: 12px;">电脑</a> <a href="/tags/算法/" style="font-size: 11px;">算法</a> <a href="/tags/编程/" style="font-size: 19px;">编程</a> <a href="/tags/美化/" style="font-size: 10px;">美化</a> <a href="/tags/设计/" style="font-size: 13px;">设计</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/21/2016年BAT公司常见的Web前端面试题整理/">2016年BAT公司常见的Web前端面试题整理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/08/安装 Kali Linux 后需要做的 20 件事/">安装 Kali Linux 后需要做的 20 件事</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/27/jquery中的ajax方法参数总是记不住，这里记录一下/">jQuery ajax方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/29/cloudsim配置/">cloudsim 配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 yinlin &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

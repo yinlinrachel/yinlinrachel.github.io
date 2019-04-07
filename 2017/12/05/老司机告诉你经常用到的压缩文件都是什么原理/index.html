@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>压缩文件算法 | yinlinRachel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="老司机告诉你经常用到的压缩文件都是什么原理想必大家都用过压缩软件，这当然毫无争议。但一直在用的你，是否曾想过，文件压缩是怎样进行的？它利用了怎样的原理来进行压缩、加密的呢？ 今天，搞机百科就给你好好讲讲压缩文件的奥秘。">
+<meta name="keywords" content="编程,电脑,算法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="压缩文件算法">
+<meta property="og:url" content="http://yoursite.com/2017/12/05/老司机告诉你经常用到的压缩文件都是什么原理/index.html">
+<meta property="og:site_name" content="yinlinRachel">
+<meta property="og:description" content="老司机告诉你经常用到的压缩文件都是什么原理想必大家都用过压缩软件，这当然毫无争议。但一直在用的你，是否曾想过，文件压缩是怎样进行的？它利用了怎样的原理来进行压缩、加密的呢？ 今天，搞机百科就给你好好讲讲压缩文件的奥秘。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://p3.pstatp.com/large/1af800048a650c4809b2">
+<meta property="og:image" content="http://p3.pstatp.com/large/1af30005f142efae628b">
+<meta property="og:image" content="http://p3.pstatp.com/large/1b760002eb193d4975b3">
+<meta property="og:image" content="http://p3.pstatp.com/large/1b750002e681f70a603d">
+<meta property="og:image" content="http://p9.pstatp.com/large/1af30005f143913771fb">
+<meta property="og:image" content="http://p1.pstatp.com/large/1af30005f14127912a6b">
+<meta property="og:image" content="http://p1.pstatp.com/large/1af800048a642dc8bd21">
+<meta property="og:image" content="http://p3.pstatp.com/large/1af700062825c6878913">
+<meta property="og:image" content="http://p3.pstatp.com/large/1b750002e682d87c771d">
+<meta property="og:image" content="http://p3.pstatp.com/large/1b750002e680f5cd573a">
+<meta property="og:updated_time" content="2019-04-06T05:27:56.879Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="压缩文件算法">
+<meta name="twitter:description" content="老司机告诉你经常用到的压缩文件都是什么原理想必大家都用过压缩软件，这当然毫无争议。但一直在用的你，是否曾想过，文件压缩是怎样进行的？它利用了怎样的原理来进行压缩、加密的呢？ 今天，搞机百科就给你好好讲讲压缩文件的奥秘。">
+<meta name="twitter:image" content="http://p3.pstatp.com/large/1af800048a650c4809b2">
+  
+    <link rel="alternate" href="/atom.xml" title="yinlinRachel" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-老司机告诉你经常用到的压缩文件都是什么原理" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      压缩文件算法
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2017/12/05/老司机告诉你经常用到的压缩文件都是什么原理/" class="article-date">
+  <time datetime="2017-12-05T01:17:00.000Z" itemprop="datePublished">2017-12-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程/">编程</a>►<a class="article-category-link" href="/categories/编程/算法/">算法</a>
+  </div>
+
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/电脑/">电脑</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/算法/">算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h1 id="老司机告诉你经常用到的压缩文件都是什么原理"><a href="#老司机告诉你经常用到的压缩文件都是什么原理" class="headerlink" title="老司机告诉你经常用到的压缩文件都是什么原理"></a>老司机告诉你经常用到的压缩文件都是什么原理</h1><p>想必大家都用过压缩软件，这当然毫无争议。但一直在用的你，是否曾想过，文件压缩是怎样进行的？它利用了怎样的原理来进行压缩、加密的呢？</p>
+<p>今天，搞机百科就给你好好讲讲压缩文件的奥秘。</p>
+<p><img src="http://p3.pstatp.com/large/1af800048a650c4809b2" alt="老司机告诉你经常用到的压缩文件都是什么原理"><br><a id="more"></a><br>一、压缩原理</p>
+<p>首先我们先来看看压缩原理，文件压缩分为有损压缩和无损压缩两种，我们常用的WinRAR、WinZip都是属于无损压缩，其基本原理都是一样的，简单地说也就是把文件中的重复数据用更简洁的方法表示，例如一个文件中有1000个字母A，那么这将占用1KB的数据空间，如果用压缩算法就可以用1000A来表示，那么它只需要5个字节的数据空间，压缩比达到了200倍，那么由此看来，1000倍甚至更高倍的压缩比是可以实现的，但要求源文件必须有足够多的重复数据。</p>
+<p>不过，我们平时使用的文件都不可能是这样的，所以通常文件压缩比都在10倍以下，如果某个软件声称对任何文件都能够产生这种超高压缩比的话，那它肯定就是具有欺骗性质的了。</p>
+<p>很多网上下载的文件只有300MB或400MB，但是解压后，居然可以达到2GB甚至更多，也许你会奇怪，为什么你用WinRAR压缩同样的文件，就没有这样的压缩效果呢？其实这是因为这些文件是用多款不同的压缩软件进行压缩的，用压缩音频最好的压缩软件压缩音频文件，用压缩动画最好的压缩软件压缩动画文件。而且在压缩时所选的参数也是最佳的，这样也就保证了最后生成的压缩文件是最小的。</p>
+<p>二、加密原理</p>
+<p>明白了压缩原理，接下来我们看看压缩文件的加密原理，通常的加密算法主要分为分组加密和序列加密。一般的数据加密可考虑采用3DES、AES等成熟的分组加密算法。</p>
+<p>而各大压缩软件都会基于加组加密进行变种、特化的方式来形成自己的加密方式。比如WinRAR用的是自己修改过的AES（分组加密算法的一种），进行初始化加密，之后使用上一次加密的结果进行自定义的乱序加密。</p>
+<p>下面我们就以WinRAR加密为例，说下压缩加密的原理。</p>
+<p>Winrar加密文件时，步骤很简单，就两步：首先，先把源文件压缩，压成一段数据段。然后再将压缩完的数据段加密。</p>
+<p>上文已经解释过压缩了，这里不再重复，那么如何加密“压缩完的数据段”呢？</p>
+<p>1、首先是获取密钥</p>
+<p>获取密钥是明文的密码与Salt一起，通过HASH算法，生成两个16字节的密钥。（一个是KEY(AES算法的参数)，一个是initVector）</p>
+<p>2、然后用Key和initVector来加密压缩数据</p>
+<p>这是一个循环加密的结构，每16字节作为一个块，进行加密（这可能正是为什么加密完的文件长度总为16倍数的原因）。加密采用AES算法（RAR采用的是AES的rijndael的标准应用）。这里注意：AES加密前，有一个异或运算，是先将每16字节块与上一个16字节块加密结果进行异或，然后再进行AES算法的。</p>
+<p>3、关于解密</p>
+<p>由于AES算法是对称的，所以解密的过程，是加密过程的逆运算。但解密时AES算法过程与加密所用的不一样（是因为解密过程中由KEY生成的子密钥表不一样）。仍然需要我们将密码输入，与salt一起生成两个16字节密钥，KEY和initVector。</p>
+<p>解密的过程是解密后的数据块进行解压缩，然后解成源文件，对该文件进行CRC校验，存在RAR文件中的源文件CRC校验码比较，相同则密码正确，不相同则密码错误。</p>
+<p>三、压缩软件大搜罗</p>
+<p>压缩软件是我们日常网络生活必备的工具之一，下面搞机百科就将目前市面上的多款压缩软件都搜罗来，让大家有更多的选择。</p>
+<p>1、WinRAR</p>
+<p>这个就不说了。</p>
+<p>2、酷压：国产压缩先驱</p>
+<p>作为国产压缩的革命先驱，酷压一直秉承着免费开源的理念，为后来大批的国产压缩软件的兴起提供了技术借鉴。但它不像其它厂商那样野蛮生长，在压缩格式上比较循规蹈矩，从不去触WinRAR的眉头。酷压发布之后，以其更小、更快、更好、更安全、更简洁迅速获得广大用户的青睐。但单一的功能性让酷压在国产压缩软件的围攻下逐渐销声匿迹，但它仍像一盏明灯，为国产压缩软件指引方向。</p>
+<p><img src="http://p3.pstatp.com/large/1af30005f142efae628b" alt="老司机告诉你经常用到的压缩文件都是什么原理"></p>
+<p>3、7-ZIP——老牌开源压缩软件</p>
+<p>7-ZIP不用多说，是世界顶级开源跨平台压缩软件，曾经是WinRAR最大的对头。二者为到底是RAR格式优越，还是ZIP格式优越多年以来一直争执不休，也无法握手言和，相互兼容。但是唯独有点丑，所以常常被人忽略。其性能当然是强悍的。</p>
+<p><img src="http://p3.pstatp.com/large/1b760002eb193d4975b3" alt="老司机告诉你经常用到的压缩文件都是什么原理"></p>
+<p>４、快压——生命力最旺盛的压缩软件</p>
+<p>快压也是国产压缩软件大战时期诞生的，工具类软件普遍生存艰难，但是它却如此持久旺盛。如果在百度搜索压缩软件，排名第一的就是它的推广。还有它自己的装机联盟推广。而且还大有以其号称超高压缩比的KZ格式一统江湖之势。</p>
+<p>快压广告较多，就它开展装机联盟来说，已经走了歪路，恐怕是打广告展示，主页锁定，流量劫持的歪主意。</p>
+<p><img src="http://p3.pstatp.com/large/1b750002e681f70a603d" alt="老司机告诉你经常用到的压缩文件都是什么原理"></p>
+<p>５、好压——全家桶大礼包</p>
+<p>好压曾经是国内最好用的压缩软件没有之一，但是单纯工具类的软件生存艰难，最后只能寄人篱下。不仅令人扼腕。自被2345收购之后，可谓是得遇伯，春风得意，一副天际蓝把自己妆点的油头粉面。技术上在原有压缩功能的基础上开发了自解压和工具箱，工具箱集成了批量文件改名、虚拟光驱在内的小工具，也集成了2345浏览器，2345看图王，2345安全卫士在内的全家桶雷区。</p>
+<p><img src="http://p9.pstatp.com/large/1af30005f143913771fb" alt="老司机告诉你经常用到的压缩文件都是什么原理"></p>
+<p>６、WinMount——不需要解压而直接使用压缩包内文件</p>
+<p>WinMount是国人开发的一款压缩软件，说它是压缩软件不太准确，应该称之为可以不用解压而读取使用压缩包内文件的虚拟光驱。它同时也真的是一个虚拟光驱，可以加载使用ISO光盘文件。</p>
+<p>它可以把 ZIP RAR ISO BIN MDF MNT 文件 mount 为一个新的盘符，这样你就可以直接使用里面的文件了， 不需要展开。节省时间，节省空间。WinMount 可以建一个空的2GB的盘，经常有人问这个有什么用。这个空盘实际上相当于一个 RAMDisk，就是在内存中的虚拟盘。所以它肯定速度快，但一关机就什么都没有了。它新建立的时候，即使是新建一个1GB的空盘，实际上不消耗什么内存。当有写操作时，才会逐渐申请内存。</p>
+<p><img src="http://p1.pstatp.com/large/1af30005f14127912a6b" alt="老司机告诉你经常用到的压缩文件都是什么原理"></p>
+<p>７、360压缩——带木马查杀的国产压缩软件</p>
+<p>360总是有那么多鬼点子，当初凭借浏览器一个小小的收藏夹同步功能迅速占领广大用户。如今在压缩上也是以贴心的功能讨取用户欢心。独创的WinRAR界面和360界面无缝切换，使用户很快过度；贴心的木马查杀功能，让压缩软件内的病毒无处遁形。</p>
+<p>在技术和功能上自不用说，依然全面而便捷。通过朝阳群众提供的RAR插件，能轻而易举对RAR格式进行各种操作。</p>
+<p><img src="http://p1.pstatp.com/large/1af800048a642dc8bd21" alt="老司机告诉你经常用到的压缩文件都是什么原理"></p>
+<p>８、PeaZip——跨平台免费开源压缩软件</p>
+<p>PeaZip是一款基于JAVA的开源跨平台软件，同时支持Windows和Linux系统。Windows自不用说，但是在Linux操作系统下要想找一款有头有脸的压缩软件，那就非它莫属了。</p>
+<p>它支持除开RAR格式以外的大部分格式，还有自有格式PEA。操作上也与其它压缩软件大同小异。</p>
+<p><img src="http://p3.pstatp.com/large/1af700062825c6878913" alt="老司机告诉你经常用到的压缩文件都是什么原理"></p>
+<p>9、FreeArc——强悍的加密功能</p>
+<p>FreeArc同样是一款开源免费跨平台的压缩软件，它在汲取7-ZIP额优势基础上又有了很大的提升，速度上号称具有 WinRAR 、7-Zip 两倍以上的压缩速度，技术上集成了多种过滤器和压缩算法。它不仅支持数据恢复，还是支持AES+Twofish+Serpent算法加密，支持使用大于1GB的字典，支持使用外部压缩软件。</p>
+<p><img src="http://p3.pstatp.com/large/1b750002e682d87c771d" alt="老司机告诉你经常用到的压缩文件都是什么原理"></p>
+<p>10、Bandizip——最美压缩软件</p>
+<p>这是一款韩国公司Bandisoft开发的压缩软件，放在最后因为最近中韩关系紧张，但这的确是一款好软件。在国产压缩软件兴起之前，被认为是最好替代WinRAR的压缩软件之一。这款软件最近发布了6.0版本，颜值可谓是压缩软件巅峰的存在。</p>
+<p>它有着漂亮的脸蛋，却不是中看不中用的花瓶。有着小巧的身材，全面的格式，便捷的操作。它支持WinZip、7-Zip 和 WinRAR 以及其它压缩格式。</p>
+<p><img src="http://p3.pstatp.com/large/1b750002e680f5cd573a" alt="老司机告诉你经常用到的压缩文件都是什么原理"></p>
+<p>看到这里，你是不是对压缩文件有了初步认识？你是否找到了心仪的压缩软件？如果这篇文章对你有点用处，希望继续关注智友搞机百科。</p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2017/12/10/沟通交流/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            生活
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2017/12/02/前端命名规范/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">前端常用代码合计</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="图片来自网络">
+    <h3 class="avatar-name">
+      
+        一路烟霞
+      
+    </h3>
+    <p class="avatar-slogan">
+      特别耐撕的小前端，资深的打酱油攻城狮。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Configuration/">Configuration</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools-config-windows/">Tools, config, windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/css/编程/">编程</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css/">前端, css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-干货/">前端, css, 干货</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-编程/">前端, css, 编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-编程-js/">前端, css, 编程, js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-编程/">前端, 编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-编程/">前端,css,编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-js/">前端,js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/css/前端/">前端</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/开源/">开源</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/">编程</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数码/">数码</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数码/技术/">技术</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/爱情句子/">爱情句子</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/前端/跨域/">跨域</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/算法/">算法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程-前端/">编程, 前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/面试/编程/">编程</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Config/">Config</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/">Html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming/">Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools/">Tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/云计算/">云计算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人际关系/">人际关系</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/句子/">句子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/干货/">干货</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开源/">开源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/情商/">情商</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/手机/">手机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作/">操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数码/">数码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爱情/">爱情</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/电脑/">电脑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/美化/">美化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计/">设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Config/" style="font-size: 18px;">Config</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/JavaScript/" style="font-size: 11px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 11px;">Linux</a> <a href="/tags/Programming/" style="font-size: 14px;">Programming</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/tags/css/" style="font-size: 17px;">css</a> <a href="/tags/html/" style="font-size: 11px;">html</a> <a href="/tags/js/" style="font-size: 16px;">js</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/云计算/" style="font-size: 10px;">云计算</a> <a href="/tags/人际关系/" style="font-size: 10px;">人际关系</a> <a href="/tags/优化/" style="font-size: 11px;">优化</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a> <a href="/tags/句子/" style="font-size: 10px;">句子</a> <a href="/tags/工具/" style="font-size: 11px;">工具</a> <a href="/tags/干货/" style="font-size: 10px;">干货</a> <a href="/tags/开源/" style="font-size: 10px;">开源</a> <a href="/tags/情商/" style="font-size: 10px;">情商</a> <a href="/tags/手机/" style="font-size: 10px;">手机</a> <a href="/tags/技巧/" style="font-size: 11px;">技巧</a> <a href="/tags/技术/" style="font-size: 12px;">技术</a> <a href="/tags/操作/" style="font-size: 10px;">操作</a> <a href="/tags/操作系统/" style="font-size: 11px;">操作系统</a> <a href="/tags/数码/" style="font-size: 10px;">数码</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/爱情/" style="font-size: 10px;">爱情</a> <a href="/tags/电脑/" style="font-size: 12px;">电脑</a> <a href="/tags/算法/" style="font-size: 11px;">算法</a> <a href="/tags/编程/" style="font-size: 19px;">编程</a> <a href="/tags/美化/" style="font-size: 10px;">美化</a> <a href="/tags/设计/" style="font-size: 13px;">设计</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/21/2016年BAT公司常见的Web前端面试题整理/">2016年BAT公司常见的Web前端面试题整理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/08/安装 Kali Linux 后需要做的 20 件事/">安装 Kali Linux 后需要做的 20 件事</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/27/jquery中的ajax方法参数总是记不住，这里记录一下/">jQuery ajax方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/29/cloudsim配置/">cloudsim 配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 yinlin &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

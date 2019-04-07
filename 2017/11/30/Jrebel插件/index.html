@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Jrebel插件 | yinlinRachel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="Jrebel插件标签： 插件  IntelliJ IDEA 的 Java 热部署插件 JRebel 安装及使用JRebel 介绍在 Java Web 开发中， 一般更新了 Java 文件后要手动重启 Tomcat 服务器， 才能生效， 浪费不少生命啊， 自从有了 JRebel 这神器的出现， 不论是更新 class 类还是更新 Spring 配置文件都能做到立马生效，大大提高开发效率。 JRebe">
+<meta name="keywords" content="Windows,Config">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Jrebel插件">
+<meta property="og:url" content="http://yoursite.com/2017/11/30/Jrebel插件/index.html">
+<meta property="og:site_name" content="yinlinRachel">
+<meta property="og:description" content="Jrebel插件标签： 插件  IntelliJ IDEA 的 Java 热部署插件 JRebel 安装及使用JRebel 介绍在 Java Web 开发中， 一般更新了 Java 文件后要手动重启 Tomcat 服务器， 才能生效， 浪费不少生命啊， 自从有了 JRebel 这神器的出现， 不论是更新 class 类还是更新 Spring 配置文件都能做到立马生效，大大提高开发效率。 JRebe">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://i.imgur.com/JGWegpA.png">
+<meta property="og:image" content="https://i.imgur.com/Tp5Msoj.png">
+<meta property="og:image" content="https://i.imgur.com/mAN83Vr.png">
+<meta property="og:image" content="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/images/xxviii-jrebel-setup-6.jpg">
+<meta property="og:image" content="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/images/xxviii-jrebel-setup-7.jpg">
+<meta property="og:image" content="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/images/xxviii-jrebel-setup-8.jpg">
+<meta property="og:image" content="https://i.imgur.com/63mjEIv.png">
+<meta property="og:image" content="http://img.blog.csdn.net/20170521162652569?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTGl4dWFuc2hlbmdjaGFv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20170521162939655?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTGl4dWFuc2hlbmdjaGFv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="http://img.blog.csdn.net/20170521163026493?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTGl4dWFuc2hlbmdjaGFv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center">
+<meta property="og:image" content="https://i.imgur.com/TVSJ7jk.png">
+<meta property="og:image" content="https://i.imgur.com/cS6qpVp.png">
+<meta property="og:image" content="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/images/xxviii-jrebel-setup-13.jpg">
+<meta property="og:image" content="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/images/xxviii-jrebel-setup-14.jpg">
+<meta property="og:image" content="https://i.imgur.com/IVT7fr4.png">
+<meta property="og:image" content="https://i.imgur.com/Xt6sVGI.png">
+<meta property="og:image" content="https://i.imgur.com/STkqDLt.png">
+<meta property="og:image" content="https://i.imgur.com/Id61mfm.png">
+<meta property="og:image" content="https://i.imgur.com/kKrihAN.png">
+<meta property="og:image" content="https://i.imgur.com/dXwtgX7.png">
+<meta property="og:updated_time" content="2019-04-06T05:27:58.504Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Jrebel插件">
+<meta name="twitter:description" content="Jrebel插件标签： 插件  IntelliJ IDEA 的 Java 热部署插件 JRebel 安装及使用JRebel 介绍在 Java Web 开发中， 一般更新了 Java 文件后要手动重启 Tomcat 服务器， 才能生效， 浪费不少生命啊， 自从有了 JRebel 这神器的出现， 不论是更新 class 类还是更新 Spring 配置文件都能做到立马生效，大大提高开发效率。 JRebe">
+<meta name="twitter:image" content="https://i.imgur.com/JGWegpA.png">
+  
+    <link rel="alternate" href="/atom.xml" title="yinlinRachel" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-Jrebel插件" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      Jrebel插件
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2017/11/30/Jrebel插件/" class="article-date">
+  <time datetime="2017-11-30T01:17:00.000Z" itemprop="datePublished">2017-11-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Configuration/">Configuration</a>
+  </div>
+
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Config/">Config</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/">Windows</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h1 id="Jrebel插件"><a href="#Jrebel插件" class="headerlink" title="Jrebel插件"></a>Jrebel插件</h1><p>标签： 插件</p>
+<hr>
+<h2 id="IntelliJ-IDEA-的-Java-热部署插件-JRebel-安装及使用"><a href="#IntelliJ-IDEA-的-Java-热部署插件-JRebel-安装及使用" class="headerlink" title="IntelliJ IDEA 的 Java 热部署插件 JRebel 安装及使用"></a>IntelliJ IDEA 的 Java 热部署插件 JRebel 安装及使用</h2><h3 id="JRebel-介绍"><a href="#JRebel-介绍" class="headerlink" title="JRebel 介绍"></a>JRebel 介绍</h3><p>在 Java Web 开发中， 一般更新了 Java 文件后要手动重启 Tomcat 服务器， 才能生效， 浪费不少生命啊， 自从有了 JRebel 这神器的出现， 不论是更新 class 类还是更新 Spring 配置文件都能做到立马生效，大大提高开发效率。</p>
+<h3 id="JRebel-安装"><a href="#JRebel-安装" class="headerlink" title="JRebel 安装"></a>JRebel 安装</h3><a id="more"></a>
+<p>JRebel 的安装方法有两种， 一种是直接在 Tomcat 启动参数上面加上 JRebel 的参数， 另外一种是以插件的形式装到 IntelliJ IDEA 上， 比较推荐后者。</p>
+<h4 id="第一种安装方法：在-Tomcat-启动参数上加参数"><a href="#第一种安装方法：在-Tomcat-启动参数上加参数" class="headerlink" title="第一种安装方法：在 Tomcat 启动参数上加参数"></a>第一种安装方法：在 Tomcat 启动参数上加参数</h4><p>首先先介绍第一种安装方法， 先在硬盘某个位置把 JRebel 解压出来<br>先配置一下本地tomcat<br><img src="https://i.imgur.com/JGWegpA.png" alt></p>
+<p>默认显示如图</p>
+<p><img src="https://i.imgur.com/Tp5Msoj.png" alt><br>几个关键的地方需要注意的， 就是首先要选择<code>Deployment</code> 这个选项卡</p>
+<p><img src="https://i.imgur.com/mAN83Vr.png" alt></p>
+<p>选择自己的项目， 建议选择带 <code>exploded</code>， 这个相当于改 Tomcat 的 <code>CATALINA_HOME</code>， 效率比较高<br>选择好后， 删掉默认的Make， 提高效率<br><img src="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/images/xxviii-jrebel-setup-6.jpg" alt></p>
+<p>接下来返回 Server 选项卡， 会发现多了一项 <code>On frame deactivation</code>， 如果你刚才没有配置 Deployment 选项卡的话的这项是不会出现的</p>
+<p>按如图所示的来配置， 特别需要注意的是 <code>On &#39;Update&#39; action</code> 和<code>On frame deactivation</code>这两项目一定要选择 <code>Update classes and resources</code>， 否则类修改热部署不生效， 或者第三方模版框架例如 Freemarker 热部署不生效</p>
+<p><img src="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/images/xxviii-jrebel-setup-7.jpg" alt></p>
+<p>接下来就是很关键的需要引入 JRebel 的地方了， 在 VM options 的最右边有个箭头， 点进去<br><img src="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/images/xxviii-jrebel-setup-8.jpg" alt><br>Windows 输入:<br><div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="PLAIN"><figure class="iseeu highlight /plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-agentpath:D:/dev_env/jrebel/jrebel_running/lib/jrebel64.dll</span><br></pre></td></tr></table></figure></div></p>
+<h4 id="第二种安装方法：使用-IntelliJ-IDEA-插件"><a href="#第二种安装方法：使用-IntelliJ-IDEA-插件" class="headerlink" title="第二种安装方法：使用 IntelliJ IDEA 插件"></a>第二种安装方法：使用 IntelliJ IDEA 插件</h4><p>下载安装jrebel</p>
+<p><img src="https://i.imgur.com/63mjEIv.png" alt><br>然后注册</p>
+<h3 id="Jrebel-激活方法"><a href="#Jrebel-激活方法" class="headerlink" title="Jrebel 激活方法"></a>Jrebel 激活方法</h3><ol>
+<li>确保你可也访问国外网站（<a href="http://www.facebook.com）,并确保你有一个facebook账号或者Twitter账号(没有的话注册一个)" target="_blank" rel="noopener">www.facebook.com）,并确保你有一个facebook账号或者Twitter账号(没有的话注册一个)</a></li>
+<li>访问  <a href="https://my.jrebel.com/" target="_blank" rel="noopener">https://my.jrebel.com/</a>  选择自己的facebook账号登录<br><img src="http://img.blog.csdn.net/20170521162652569?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTGl4dWFuc2hlbmdjaGFv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt><br>完成后</li>
+</ol>
+<p><img src="http://img.blog.csdn.net/20170521162939655?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTGl4dWFuc2hlbmdjaGFv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt><br><img src="http://img.blog.csdn.net/20170521163026493?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvTGl4dWFuc2hlbmdjaGFv/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/Center" alt><br>3 将激活码复制到Intellij Idea Rrebel激活<br><img src="https://i.imgur.com/TVSJ7jk.png" alt><br>4 查看当前Jrebel状态，绿色图标表示激活状态<br><img src="https://i.imgur.com/cS6qpVp.png" alt></p>
+<p>激活完毕</p>
+<hr>
+<p>###　运行<br>在原来运行项目的按钮边上会多出两个绿色的按钮， 如图， 前面那个是 <code>Run</code>， 后面那个是<code>Debug</code><br><img src="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/images/xxviii-jrebel-setup-13.jpg" alt></p>
+<p>配置 Tomcat 的方法和直接上面说的直接调用配置方法一样， 同样需要注意的是<code>On &#39;Update&#39; action</code>和 <code>On frame deactivation</code>这两项目一定要选择<code>Update classes and resources</code>， 唯一不同的是<code>VM options</code> 这项不需要填， 放空就好 接下来直接启动项目， 一般选择后面那个<code>Debug</code> 按钮<br><img src="http://wiki.jikexueyuan.com/project/intellij-idea-tutorial/images/xxviii-jrebel-setup-14.jpg" alt><br>看到 Log 有 JRebel 输出的版本信息， 没有报错就是表示成功执行了</p>
+<hr>
+<h3 id="配置springboot"><a href="#配置springboot" class="headerlink" title="配置springboot"></a>配置springboot</h3><p>先安装jrebel,配置好后:</p>
+<ol>
+<li>Idea中ctrl+alt+shift+/弹出</li>
+</ol>
+<p><img src="https://i.imgur.com/IVT7fr4.png" alt></p>
+<ol start="2">
+<li><p>进入registry 进入如下界面<br><img src="https://i.imgur.com/Xt6sVGI.png" alt></p>
+</li>
+<li><p>将compiler.automake.allow.when.app.running 选中,退出该界面</p>
+</li>
+</ol>
+<ol start="4">
+<li>在项目的src/resources文件夹右键,弹出菜单最下边JReble&gt;rebel.xml</li>
+</ol>
+<p><img src="https://i.imgur.com/STkqDLt.png" alt></p>
+<ol start="5">
+<li><p>打开刚刚生成的rebel.xml文件,将classpath dir修改到你项目的build文件夹<br><img src="https://i.imgur.com/Id61mfm.png" alt></p>
+</li>
+<li><p>在启动类中右键,使用Jrebel（Debug | run）进行启动<br>配置该项目</p>
+</li>
+</ol>
+<p><img src="https://i.imgur.com/kKrihAN.png" alt><br><img src="https://i.imgur.com/dXwtgX7.png" alt><br>启动后呢,修改了代码,直接编译Build&gt;build project,刷新一下网页就可以看到效果了,<br>尽情的享受不重启服务器带来的快感吧！</p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2017/12/01/清理缓存/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            清理缓存
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2017/11/18/小巧好用的工具软件推荐，提升你的办公学习效率/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">小工具</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="图片来自网络">
+    <h3 class="avatar-name">
+      
+        一路烟霞
+      
+    </h3>
+    <p class="avatar-slogan">
+      特别耐撕的小前端，资深的打酱油攻城狮。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Configuration/">Configuration</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools-config-windows/">Tools, config, windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/css/编程/">编程</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css/">前端, css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-干货/">前端, css, 干货</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-编程/">前端, css, 编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-编程-js/">前端, css, 编程, js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-编程/">前端, 编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-编程/">前端,css,编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-js/">前端,js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/css/前端/">前端</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/开源/">开源</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/">编程</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数码/">数码</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数码/技术/">技术</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/爱情句子/">爱情句子</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/前端/跨域/">跨域</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/算法/">算法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程-前端/">编程, 前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/面试/编程/">编程</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Config/">Config</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/">Html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming/">Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools/">Tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/云计算/">云计算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人际关系/">人际关系</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/句子/">句子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/干货/">干货</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开源/">开源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/情商/">情商</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/手机/">手机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作/">操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数码/">数码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爱情/">爱情</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/电脑/">电脑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/美化/">美化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计/">设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Config/" style="font-size: 18px;">Config</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/JavaScript/" style="font-size: 11px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 11px;">Linux</a> <a href="/tags/Programming/" style="font-size: 14px;">Programming</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/tags/css/" style="font-size: 17px;">css</a> <a href="/tags/html/" style="font-size: 11px;">html</a> <a href="/tags/js/" style="font-size: 16px;">js</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/云计算/" style="font-size: 10px;">云计算</a> <a href="/tags/人际关系/" style="font-size: 10px;">人际关系</a> <a href="/tags/优化/" style="font-size: 11px;">优化</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a> <a href="/tags/句子/" style="font-size: 10px;">句子</a> <a href="/tags/工具/" style="font-size: 11px;">工具</a> <a href="/tags/干货/" style="font-size: 10px;">干货</a> <a href="/tags/开源/" style="font-size: 10px;">开源</a> <a href="/tags/情商/" style="font-size: 10px;">情商</a> <a href="/tags/手机/" style="font-size: 10px;">手机</a> <a href="/tags/技巧/" style="font-size: 11px;">技巧</a> <a href="/tags/技术/" style="font-size: 12px;">技术</a> <a href="/tags/操作/" style="font-size: 10px;">操作</a> <a href="/tags/操作系统/" style="font-size: 11px;">操作系统</a> <a href="/tags/数码/" style="font-size: 10px;">数码</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/爱情/" style="font-size: 10px;">爱情</a> <a href="/tags/电脑/" style="font-size: 12px;">电脑</a> <a href="/tags/算法/" style="font-size: 11px;">算法</a> <a href="/tags/编程/" style="font-size: 19px;">编程</a> <a href="/tags/美化/" style="font-size: 10px;">美化</a> <a href="/tags/设计/" style="font-size: 13px;">设计</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/21/2016年BAT公司常见的Web前端面试题整理/">2016年BAT公司常见的Web前端面试题整理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/08/安装 Kali Linux 后需要做的 20 件事/">安装 Kali Linux 后需要做的 20 件事</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/27/jquery中的ajax方法参数总是记不住，这里记录一下/">jQuery ajax方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/29/cloudsim配置/">cloudsim 配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 yinlin &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

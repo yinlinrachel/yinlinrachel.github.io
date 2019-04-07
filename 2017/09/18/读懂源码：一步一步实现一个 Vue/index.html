@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>读源码 | yinlinRachel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="读懂源码：一步一步实现一个 Vue源码阅读：究竟怎样才算是读懂了？ 市面上有很多源码分析的文章，就我看到的而言，基本的套路就是梳理流程，讲一讲每个模块的功能，整篇文章有一大半都是直接挂源码。我不禁怀疑，作者真的看懂了吗？为什么我看完后还是什么都不懂呢？ 事实上一个经过无数次版本迭代的框架源码并不适合初学者直接阅读，因为里面有太多细节，太多噪点，太多枝枝蔓蔓。要想真正理解框架的核心逻辑，必须剥茧抽丝">
+<meta name="keywords" content="前端,css,js,编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="读源码">
+<meta property="og:url" content="http://yoursite.com/2017/09/18/读懂源码：一步一步实现一个 Vue/index.html">
+<meta property="og:site_name" content="yinlinRachel">
+<meta property="og:description" content="读懂源码：一步一步实现一个 Vue源码阅读：究竟怎样才算是读懂了？ 市面上有很多源码分析的文章，就我看到的而言，基本的套路就是梳理流程，讲一讲每个模块的功能，整篇文章有一大半都是直接挂源码。我不禁怀疑，作者真的看懂了吗？为什么我看完后还是什么都不懂呢？ 事实上一个经过无数次版本迭代的框架源码并不适合初学者直接阅读，因为里面有太多细节，太多噪点，太多枝枝蔓蔓。要想真正理解框架的核心逻辑，必须剥茧抽丝">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/925891/201712/925891-20171210203144099-1000919574.png">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/925891/201712/925891-20171210204107208-1422789571.png">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/925891/201712/925891-20171210204251833-1151977100.png">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/925891/201712/925891-20171210224300083-1995638876.png">
+<meta property="og:image" content="http://images2017.cnblogs.com/blog/925891/201712/925891-20171210224314927-1241933347.jpg">
+<meta property="og:updated_time" content="2019-04-06T05:27:58.093Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="读源码">
+<meta name="twitter:description" content="读懂源码：一步一步实现一个 Vue源码阅读：究竟怎样才算是读懂了？ 市面上有很多源码分析的文章，就我看到的而言，基本的套路就是梳理流程，讲一讲每个模块的功能，整篇文章有一大半都是直接挂源码。我不禁怀疑，作者真的看懂了吗？为什么我看完后还是什么都不懂呢？ 事实上一个经过无数次版本迭代的框架源码并不适合初学者直接阅读，因为里面有太多细节，太多噪点，太多枝枝蔓蔓。要想真正理解框架的核心逻辑，必须剥茧抽丝">
+<meta name="twitter:image" content="http://images2017.cnblogs.com/blog/925891/201712/925891-20171210203144099-1000919574.png">
+  
+    <link rel="alternate" href="/atom.xml" title="yinlinRachel" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-读懂源码：一步一步实现一个 Vue" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      读源码
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2017/09/18/读懂源码：一步一步实现一个 Vue/" class="article-date">
+  <time datetime="2017-09-18T11:17:00.000Z" itemprop="datePublished">2017-09-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/编程/">编程</a>
+  </div>
+
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端/">前端</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h1 id="读懂源码：一步一步实现一个-Vue"><a href="#读懂源码：一步一步实现一个-Vue" class="headerlink" title="读懂源码：一步一步实现一个 Vue"></a><a href="http://www.cnblogs.com/kidney/p/8018226.html" target="_blank" rel="noopener">读懂源码：一步一步实现一个 Vue</a></h1><p><strong>源码阅读：究竟怎样才算是读懂了？</strong></p>
+<p>市面上有很多源码分析的文章，就我看到的而言，基本的套路就是梳理流程，讲一讲每个模块的功能，整篇文章有一大半都是直接挂源码。我不禁怀疑，作者真的看懂了吗？为什么我看完后还是什么都不懂呢？</p>
+<p>事实上一个经过无数次版本迭代的框架源码并不适合初学者直接阅读，因为里面有太多细节，太多噪点，太多枝枝蔓蔓。要想真正理解框架的核心逻辑，必须剥茧抽丝，还原出一个纯净的雏形。如同 jQuery 最早的版本只有六百多行，我相信 Vue 的核心功能也只需要几百行就能实现。所以，读懂源码的标志就是还原，码越薄，真相就越清晰。<br><a id="more"></a></p>
+<p><strong>如何还原雏形？</strong></p>
+<p>一开始我设想的还原过程就是先删后拆。什么报错信息、参数校验、非核心功能全部砍掉，八千行变成了五千行。然后再拆，按功能模块将一个 Vue.js 拆分成 util.js, observer.js, watcher.js …</p>
+<p>理想状态下，我应该能够理解源码了吧，可做完解剖手术后，我发现里面的逻辑依然纷繁复杂，剪不断，理还乱，草蛇灰线，伏脉千里，即便换了一个更早期更简短的版本，仍然很快又陷入了永无止境的细节中。</p>
+<p>最终我得出结论：与其根据源码还原雏形，不如参考源码自己从头实现一个雏形。</p>
+<p><strong>定义核心</strong></p>
+<p>Version：2.0.4</p>
+<p>只考虑 runtime 版本，不考虑模板编译，不考虑服务端渲染。</p>
+<p>核心功能：响应式的数据绑定、虚拟 DOM、diff 算法、patch 方法（用于更新真实 DOM）</p>
+<p>如果你对上述基础概念完全不熟，建议先积累一些背景知识：关于响应式绑定参考<a href="http://www.cnblogs.com/kidney/p/6052935.html" target="_blank" rel="noopener">这篇文章</a>，关于 virtual dom 和 diff 算法参考这个<a href="https://www.youtube.com/watch?v=l2Tu0NqH0qU" target="_blank" rel="noopener">视频</a>。当然，这些并不是必须的。</p>
+<p><strong>目标</strong></p>
+<p><img src="http://images2017.cnblogs.com/blog/925891/201712/925891-20171210203144099-1000919574.png" alt="img"></p>
+<p>事实上，Vue-cli 生成的项目中，<template> 标签中的内容都会被编译为 render 函数，render 函数返回整棵虚拟节点树。我们最终要实现一个 Vue，来完成上面的示例。</template></p>
+<p><strong>当 new Vue() 的时候发生了什么？</strong></p>
+<p>我们的实现会参考源码的套路，但会大量的简化其中的细节。为了理解源码的结构，最好的突破口就是了解程序的起点 new Vue() 的背后究竟发生了什么。</p>
+<p>简单梳理下源码的执行流：</p>
+<p>=&gt; 初始化生命周期</p>
+<p>=&gt; 初始化事件系统</p>
+<p>=&gt; 初始化state，依次处理 props、data、computed …</p>
+<p>=&gt; 开始渲染 _mount() =&gt; _render() 返回 vdom=&gt; _update() =&gt; <strong>patch</strong>() 更新真实DOM</p>
+<p>更详细的说明可以参考<a href="https://github.com/DDFE/DDFE-blog/issues/17" target="_blank" rel="noopener">这篇文章</a>，我们只会实现其中最核心的部分</p>
+<p><strong>第一步：将虚拟 DOM 树渲染到真实的 DOM</strong></p>
+<p>每一个 DOM 节点都是一个 node 对象，这个对象含有大量的属性与方法，虚拟 DOM 其实就是超轻量版的 node 对象。</p>
+<p><img src="http://images2017.cnblogs.com/blog/925891/201712/925891-20171210204107208-1422789571.png" alt="img"></p>
+<p>我们要生成的 DOM 树看上去是这样的：</p>
+<p><img src="http://images2017.cnblogs.com/blog/925891/201712/925891-20171210204251833-1151977100.png" alt="img"></p>
+<p>关于 data 参数的属性，请参考<a href="https://cn.vuejs.org/v2/guide/render-function.html#%E6%B7%B1%E5%85%A5-data-%E5%AF%B9%E8%B1%A1" target="_blank" rel="noopener">官方文档</a></p>
+<p>随后我们会通过 createElm 方法和 createChildren 方法的相互调用，遍历整棵虚拟节点树，生成真实的 DOM 节点树，最后替换到挂载点。</p>
+<p><a href="https://github.com/bison1994/vue-for-learning/blob/master/stage-1/vue-0.1.js" target="_blank" rel="noopener">完整代码</a></p>
+<p><strong>第二步：修改数据，执行 diff 算法，并将变化的部分 patch 到真实 DOM</strong></p>
+<p><img src="http://images2017.cnblogs.com/blog/925891/201712/925891-20171210224300083-1995638876.png" alt="img"></p>
+<p>diff 算法的逻辑比较复杂，可以单独摘出来研究，由于我们的目的是理解框架的核心逻辑，因此代码实现里只考虑了最简单的情形。</p>
+<p><a href="https://github.com/bison1994/vue-for-learning/blob/master/stage-3/vue-0.3.js" target="_blank" rel="noopener">完整代码</a></p>
+<p><strong>第三步：对数据做响应式处理，当数据变化时，自动执行更新方法</strong></p>
+<p><img src="http://images2017.cnblogs.com/blog/925891/201712/925891-20171210224314927-1241933347.jpg" alt="img"></p>
+<p>data 中的每一个属性都会被处理为存取器属性，同时每一个属性都会在闭包中维护一个属于自己的 dep 对象，用于存放该属性的依赖项。当属性被赋予新的值时，就会触发 set 方法，并通知所有依赖项进行更新。</p>
+<p><a href="https://github.com/bison1994/vue-for-learning/blob/master/stage-4/vue-0.4.js" target="_blank" rel="noopener">完整代码</a></p>
+<p>Vue 渐进式的特点，使其上手极其容易，我相信，渐进式的展现框架逻辑的实现过程，也会使理解变得更容</p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2017/09/22/前端开发：非常好用的 JavaScript 表格控件/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            js表单
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2017/09/16/windows10升级后必做优化/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">windows优化</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="图片来自网络">
+    <h3 class="avatar-name">
+      
+        一路烟霞
+      
+    </h3>
+    <p class="avatar-slogan">
+      特别耐撕的小前端，资深的打酱油攻城狮。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Configuration/">Configuration</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools-config-windows/">Tools, config, windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/css/编程/">编程</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css/">前端, css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-干货/">前端, css, 干货</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-编程/">前端, css, 编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-编程-js/">前端, css, 编程, js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-编程/">前端, 编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-编程/">前端,css,编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-js/">前端,js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/css/前端/">前端</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/开源/">开源</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/">编程</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数码/">数码</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数码/技术/">技术</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/爱情句子/">爱情句子</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/前端/跨域/">跨域</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/算法/">算法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程-前端/">编程, 前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/面试/编程/">编程</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Config/">Config</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/">Html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming/">Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools/">Tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/云计算/">云计算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人际关系/">人际关系</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/句子/">句子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/干货/">干货</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开源/">开源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/情商/">情商</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/手机/">手机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作/">操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数码/">数码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爱情/">爱情</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/电脑/">电脑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/美化/">美化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计/">设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Config/" style="font-size: 18px;">Config</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/JavaScript/" style="font-size: 11px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 11px;">Linux</a> <a href="/tags/Programming/" style="font-size: 14px;">Programming</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/tags/css/" style="font-size: 17px;">css</a> <a href="/tags/html/" style="font-size: 11px;">html</a> <a href="/tags/js/" style="font-size: 16px;">js</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/云计算/" style="font-size: 10px;">云计算</a> <a href="/tags/人际关系/" style="font-size: 10px;">人际关系</a> <a href="/tags/优化/" style="font-size: 11px;">优化</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a> <a href="/tags/句子/" style="font-size: 10px;">句子</a> <a href="/tags/工具/" style="font-size: 11px;">工具</a> <a href="/tags/干货/" style="font-size: 10px;">干货</a> <a href="/tags/开源/" style="font-size: 10px;">开源</a> <a href="/tags/情商/" style="font-size: 10px;">情商</a> <a href="/tags/手机/" style="font-size: 10px;">手机</a> <a href="/tags/技巧/" style="font-size: 11px;">技巧</a> <a href="/tags/技术/" style="font-size: 12px;">技术</a> <a href="/tags/操作/" style="font-size: 10px;">操作</a> <a href="/tags/操作系统/" style="font-size: 11px;">操作系统</a> <a href="/tags/数码/" style="font-size: 10px;">数码</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/爱情/" style="font-size: 10px;">爱情</a> <a href="/tags/电脑/" style="font-size: 12px;">电脑</a> <a href="/tags/算法/" style="font-size: 11px;">算法</a> <a href="/tags/编程/" style="font-size: 19px;">编程</a> <a href="/tags/美化/" style="font-size: 10px;">美化</a> <a href="/tags/设计/" style="font-size: 13px;">设计</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/21/2016年BAT公司常见的Web前端面试题整理/">2016年BAT公司常见的Web前端面试题整理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/08/安装 Kali Linux 后需要做的 20 件事/">安装 Kali Linux 后需要做的 20 件事</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/27/jquery中的ajax方法参数总是记不住，这里记录一下/">jQuery ajax方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/29/cloudsim配置/">cloudsim 配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 yinlin &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>

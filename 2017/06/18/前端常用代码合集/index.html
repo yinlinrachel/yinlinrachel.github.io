@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>前端常用代码合计 | yinlinRachel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  <meta name="description" content="前端常用代码合集1.使用FileReader实现前端图片预览 1&amp;lt;input type=&quot;file&quot;&amp;gt;&amp;lt;br&amp;gt;&amp;lt;img src=&quot;&quot; height=&quot;200&quot; alt=&quot;Image preview area...&quot; title=&quot;preview-img&quot;&amp;gt;  var fileInput = document.querySelector(‘input[type=f">
+<meta name="keywords" content="编程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端常用代码合计">
+<meta property="og:url" content="http://yoursite.com/2017/06/18/前端常用代码合集/index.html">
+<meta property="og:site_name" content="yinlinRachel">
+<meta property="og:description" content="前端常用代码合集1.使用FileReader实现前端图片预览 1&amp;lt;input type=&quot;file&quot;&amp;gt;&amp;lt;br&amp;gt;&amp;lt;img src=&quot;&quot; height=&quot;200&quot; alt=&quot;Image preview area...&quot; title=&quot;preview-img&quot;&amp;gt;  var fileInput = document.querySelector(‘input[type=f">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-04-06T05:27:56.842Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端常用代码合计">
+<meta name="twitter:description" content="前端常用代码合集1.使用FileReader实现前端图片预览 1&amp;lt;input type=&quot;file&quot;&amp;gt;&amp;lt;br&amp;gt;&amp;lt;img src=&quot;&quot; height=&quot;200&quot; alt=&quot;Image preview area...&quot; title=&quot;preview-img&quot;&amp;gt;  var fileInput = document.querySelector(‘input[type=f">
+  
+    <link rel="alternate" href="/atom.xml" title="yinlinRachel" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/images/default-avatar.jpeg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/highlight.css">
+</head>
+</html>
+<body>
+  <div id="fullpage" class="mobile-nav-right">
+    
+      <div id="wrapper" title="图片来自网络">
+    
+    
+      <header id="header">
+  <div id="nav-toggle" class="nav-toggle"></div>
+  <div class="head-box global-width">
+    <nav class="nav-box nav-right">
+      
+        <a class="nav-item" href="/" title>首页</a>
+      
+        <a class="nav-item" href="/archives" title>归档</a>
+      
+    </nav>
+  </div>
+</header>
+      <div id="middlecontent" title class="global-width sidebar-right">
+        <section id="main"><article id="post-前端常用代码合集" class="article global-container article-type-post" itemscope itemprop="blogPost">
+  
+    <header class="article-header">
+      
+  
+    <h1 class="article-title" itemprop="name">
+      前端常用代码合计
+    </h1>
+  
+
+    </header>
+  
+  <div class="article-meta">
+    <a href="/2017/06/18/前端常用代码合集/" class="article-date">
+  <time datetime="2017-06-18T11:17:00.000Z" itemprop="datePublished">2017-06-18</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/前端-css-编程/">前端, css, 编程</a>
+  </div>
+
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编程/">编程</a></li></ul>
+
+  </div>
+  
+    <span id="busuanzi_container_page_pv">
+      本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+    </span>
+  
+
+  <div class="article-inner">
+    
+    <div class="article-content article-content-doorframe" itemprop="articleBody">
+      
+        <h1 id="前端常用代码合集"><a href="#前端常用代码合集" class="headerlink" title="前端常用代码合集"></a>前端常用代码合集</h1><p>1.使用FileReader实现前端图片预览</p>
+<div class="highlight-box" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" contenteditable="true" data-rel="HTML"><figure class="iseeu highlight /html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"file"</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">""</span> <span class="attr">height</span>=<span class="string">"200"</span> <span class="attr">alt</span>=<span class="string">"Image preview area..."</span> <span class="attr">title</span>=<span class="string">"preview-img"</span>&gt;</span></span><br></pre></td></tr></table></figure></div>
+<blockquote>
+<p>var fileInput = document.querySelector(‘input[type=file]’);</p>
+<p>var previewImg = document.querySelector(‘img’);</p>
+<p>fileInput.addEventListener(‘change’, function () {</p>
+<p>var file = this.files[0];</p>
+<p>var reader = new FileReader();</p>
+<p>reader.addEventListener(‘load’, function () {</p>
+<p>previewImg.src = reader.result;</p>
+<p>}, false);</p>
+<p>reader.readAsDataURL(file);</p>
+<p>}, false);</p>
+</blockquote>
+<p>2.取到页面中所有的checkbox怎么做？(不使用第三方框架)</p>
+<blockquote>
+<p>var doc = document,</p>
+<p>domList = doc.getElementsByTagName(‘input’),</p>
+<p>checkBoxList = [],</p>
+<p>len = domList.length;</p>
+<p>while (len–) {</p>
+<p>if (domList[len].type === ‘checkbox’) {</p>
+<p>checkBoxList.push(domList[len]);</p>
+<p>}</p>
+<p>}</p>
+</blockquote>
+<p>3.JavaScript模版引擎小实例</p>
+<blockquote>
+<div class="result"></div>
+
+<script type="template" id="template">
+
+<h2>
+
+<a href="">
+
+前端常用代码合计
+
+</a>
+
+</h2>
+
+<img src="" width="300" height="100" alt="前端常用代码合计"/>
+
+</script>
+</blockquote>
+<p>数据:</p>
+<blockquote>
+<p>var data = [</p>
+<p>{</p>
+<p>title: “”,</p>
+<p>href: “”,</p>
+<p>imgSrc: “”</p>
+<p>},</p>
+<p>…</p>
+<p>];</p>
+</blockquote>
+<p>方法一：</p>
+<blockquote>
+<p>var doc = document,</p>
+<p>template = doc.querySelector(‘#template’).innerHTML,</p>
+<p>result = doc.querySelector(‘.result’),</p>
+<p>fragment = ‘’;</p>
+<p>for (var i = 0, len = data.length; i &lt; len; i++) {</p>
+<p>fragment += template</p>
+<p>.replace(/前端常用代码合计/, data[i].title)</p>
+<p>.replace(//, data[i].href)</p>
+<p>.replace(//, data[i].imgSrc)</p>
+<p>}</p>
+<p>result.innerHTML = fragment;</p>
+</blockquote>
+<p>方法二：</p>
+<blockquote>
+<p>var doc = document,</p>
+<p>template = doc.querySelector(‘#template’).innerHTML,</p>
+<p>result = doc.querySelector(‘.result’),</p>
+<p>attachTemplateToData;</p>
+<p>attachTemplateToData = function (template, data) {</p>
+<p>var i = 0,</p>
+<p>len = data.length,</p>
+<p>fragment = ‘’;</p>
+<p>function replace(obj) {</p>
+<p>var t, key, reg;</p>
+<p>for (key in obj) {</p>
+<p>reg = new RegExp(‘ + key + ‘, ‘ig’);</p>
+<p>t = (t || template).replace(reg, obj[key]);</p>
+<p>}</p>
+<p>return t;</p>
+<p>}</p>
+<p>for (; i &lt; len; i++) {</p>
+<p>fragment += replace(data[i]);</p>
+<p>}</p>
+<p>return fragment;</p>
+<p>};</p>
+<p>result.innerHTML = attachTemplateToData(template, data);</p>
+</blockquote>
+<hr>
+<p>4.实现JS函数重载</p>
+<blockquote>
+<p>var people = {</p>
+<p>values: [“Dean Edwards”, “Sam Stephenson”, “Alex Russell”, “Dean Tom”]</p>
+<p>};</p>
+<p>function addMethod(object, name, fn) {</p>
+<p>var old = object[name];</p>
+<p>object[name] = function () {</p>
+<p>if (fn.length === arguments.length) {</p>
+<p>return fn.apply(this, arguments);</p>
+<p>} else if (typeof old === ‘function’) {</p>
+<p>return old.apply(this, arguments);</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>addMethod(people, “find”, function () {</p>
+<p>return this.values;</p>
+<p>});</p>
+<p>addMethod(people, “find”, function (firstName) {</p>
+<p>var ret = [];</p>
+<p>for (var i = 0; i &lt; this.values.length; i++) {</p>
+<p>if (this.values[i].indexOf(firstName) === 0) {</p>
+<p>ret.push(this.values[i]);</p>
+<p>}</p>
+<p>}</p>
+<p>return ret;</p>
+<p>});</p>
+<p>addMethod(people, “find”, function (firstName, lastName) {</p>
+<p>var ret = [];</p>
+<p>for (var i = 0; i &lt; this.values.length; i++) {</p>
+<p>if (this.values[i] === (firstName + ‘ ‘ + lastName)) {</p>
+<p>ret.push(this.values[i]);</p>
+<p>}</p>
+<p>}</p>
+<p>return ret;</p>
+<p>});</p>
+<p>console.log(people.find());</p>
+<p>console.log(people.find(“Sam”));</p>
+<p>console.log(people.find(“Dean Edwards”));</p>
+</blockquote>
+<p>5.JS跨浏览器绑定事件函数</p>
+<p>常规实现方法:</p>
+<blockquote>
+<p>//跨浏览器添加事件</p>
+<p>function addHandler(target, eventType, handler) {</p>
+<p>//检测浏览器类型，并且重写addHandler方法</p>
+<p>if (target.addEventListener) {</p>
+<p>addHandler = function (target, eventType, handler) {</p>
+<p>target.addEventListener(eventType, handler, false);</p>
+<p>}</p>
+<p>} else { //IE</p>
+<p>addHandler = function (target, eventType, handler) {</p>
+<p>target.attachEvent(“on” + eventType, handler);</p>
+<p>}</p>
+<p>}</p>
+<p>//调用新的函数</p>
+<p>addHandler(target, eventType, handler);</p>
+<p>}</p>
+<p>//跨浏览器移除事件</p>
+<p>function removeHandler(target, eventType, handler) {</p>
+<p>//检测浏览器类型，并且重写addHandler方法</p>
+<p>if (target.addEventListener) {</p>
+<p>removeHandler = function (target, eventType, handler) {</p>
+<p>target.removeEventListener(eventType, handler, false);</p>
+<p>}</p>
+<p>} else { //IE</p>
+<p>removeHandler = function (target, eventType, handler) {</p>
+<p>target.detachEvent(“on”, eventType, handler);</p>
+<p>}</p>
+<p>}</p>
+<p>target.detachEvent(“on” + eventType, handler);</p>
+<p>}</p>
+</blockquote>
+<p>优化方法:</p>
+<blockquote>
+<p>//绑定事件</p>
+<p>var addHandler = document.body.addEventListener ?</p>
+<p>function (target, eventType, handler) {//DOM2</p>
+<p>target.addEventListener(eventType, handler, false);</p>
+<p>} :</p>
+<p>function (target, eventType, handler) {//IE</p>
+<p>target.attachEvent(“on” + eventType, handler);</p>
+<p>};</p>
+<p>//移除事件</p>
+<p>var removeHandler = document.body.removeEventListener ?</p>
+<p>function (target, eventType, handler) {</p>
+<p>target.removeEventListener(eventType, handler, false);</p>
+<p>} :</p>
+<p>function (target, eventType, handler) {</p>
+<p>target.detachEvent(“on” + eventType, handler);</p>
+<p>};</p>
+</blockquote>
+<p>6.JS单体模式</p>
+<blockquote>
+<p>var shoppingCar = (function () {</p>
+<p>//这个是由购物车构造器所创建的实例</p>
+<p>var instance;</p>
+<p>//购物车的构造器函数　</p>
+<p>function Trolley() {</p>
+<p>this.date = new Date().getDate();//实例属性，当前日期</p>
+<p>}</p>
+<p>//原型属性，一个返回当前日期的方法</p>
+<p>Trolley.prototype.getDate = function () {</p>
+<p>return this.date;</p>
+<p>};</p>
+<p>//暴露出去的公共API</p>
+<p>return function () {</p>
+<p>//如果实例不存在，那么就调用Trolley构造器实例化一个</p>
+<p>if (!instance) {</p>
+<p>instance = new Trolley();</p>
+<p>}</p>
+<p>//将实例返回外部</p>
+<p>return instance;</p>
+<p>}</p>
+<p>}());</p>
+<p>var a = new shoppingCar();</p>
+<p>var b = new shoppingCar();</p>
+<p>console.log(a === b);//true</p>
+</blockquote>
+<p>7.使用prototype属性定义的对象方法</p>
+<blockquote>
+<p>var dom = function () {};</p>
+<p>dom.Show = function () {</p>
+<p>alert(“Show Message”);</p>
+<p>};</p>
+<p>dom.prototype.Display = function () {</p>
+<p>alert(“Property Message”);</p>
+<p>};</p>
+<p>dom.Display(); //error</p>
+<p>dom.Show(); //Show Message</p>
+<p>var d = new dom();</p>
+<p>d.Display(); //Property Message</p>
+<p>d.Show(); //error</p>
+</blockquote>
+<p>1、不使用prototype属性定义的对象方法，是静态方法，只能直接用类名进行调用！另外，此静态方法中无法使用this变量来调用对象其他的属性！</p>
+<p>2、使用prototype属性定义的对象方法，是非静态方法，只有在实例化后才能使用！其方法内部可以this来引用对象自身中的其他属性！</p>
+<p>8.闭包实现结果缓存</p>
+<blockquote>
+<p>var CachedSearchBox = (function () {</p>
+<p>var cache = {},</p>
+<p>table = [];</p>
+<p>return {</p>
+<p>attachSearchBox: function (dsid) {</p>
+<p>if (dsid in cache) { //如果结果在缓存中</p>
+<p>return cache[dsid]; //直接返回缓存中的对象</p>
+<p>}</p>
+<p>var fsb = new uikit.webctrl.SearchBox(dsid);//新建</p>
+<p>cache[dsid] = fsb;//更新缓存</p>
+<p>if (count.length &gt; 100) {</p>
+<p>delete cache[shift()];</p>
+<p>}</p>
+<p>return fsb;</p>
+<p>},</p>
+<p>clearSearchBox: function (dsid) {</p>
+<p>if (dsid in cache) {</p>
+<p>cache[dsid].clearSelection();</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>})();</p>
+<p>CachedSearchBox.attachSearchBox(‘input’);</p>
+</blockquote>
+<p>我们开发中会碰到很多情况，设想我们有一个处理过程很耗时的函数对象，每次调用都会花费很长时间，</p>
+<p>那么我们就需要将计算出来的值存储起来，当调用这个函数的时候，首先在缓存中查找，如果找不到，则进行计算，然后更新缓存并返回值，如果找到了，直接返回查找到的值即可。闭包正是可以做到这一点，因为它不会释放外部的引用，从而函数内部的值可以得以保留。</p>
+<p>9.闭包实现封装</p>
+<blockquote>
+<p>var person = function () {</p>
+<p>var name = “Default”;</p>
+<p>return {</p>
+<p>getName: function () {</p>
+<p>return name;</p>
+<p>},</p>
+<p>setName: function (newName) {</p>
+<p>name = newName;</p>
+<p>}</p>
+<p>}</p>
+<p>}();</p>
+<p>console.log(person.name);//undefined</p>
+<p>console.log(person.getName());//Default</p>
+<p>person.setName(“GoodMan”);</p>
+<p>console.log(person.getName());//GoodMan</p>
+</blockquote>
+<p>10.闭包实现类和继承</p>
+<blockquote>
+<p>function Person() {</p>
+<p>var name = “default”;</p>
+<p>return {</p>
+<p>getName: function () {</p>
+<p>return name;</p>
+<p>},</p>
+<p>setName: function (newName) {</p>
+<p>name = newName;</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>var p = new Person();</p>
+<p>p.setName(‘Tom’);</p>
+<p>console.log(p.getName());</p>
+<p>var Jack = function () {</p>
+<p>};</p>
+<p>Jack.prototype = new Person();//继承自Person</p>
+<p>Jack.prototype.Say = function () { //添加私有方法</p>
+<p>console.log(“Hello,my name is Jack”);</p>
+<p>};</p>
+<p>var j = new Jack();</p>
+<p>j.setName(“Jack”);//Tom</p>
+<p>j.Say();//Hello,my name is Jack</p>
+<p>console.log(j.getName());//Jack</p>
+</blockquote>
+<p>11.如何判断某变量是否为数组数据类型</p>
+<blockquote>
+<p>if (typeof Array.isArray === “undefined”) {</p>
+<p>Array.isArray = function (arg) {</p>
+<p>return Object.prototype.toString.call(arg) === “[object Array]”</p>
+<p>};</p>
+<p>}</p>
+</blockquote>
+<p>12.Javascript继承-借用构造函数</p>
+<blockquote>
+<p>var Widget = function (name) {</p>
+<p>this.messages = [];</p>
+<p>};</p>
+<p>Widget.prototype.type = ‘Widget’;</p>
+<p>var SubWidget = function (name) {</p>
+<p>Widget.apply(this, Array.prototype.slice.call(arguments));</p>
+<p>this.name = name;</p>
+<p>};</p>
+<p>SubWidget.prototype = Widget.prototype;</p>
+<p>var sub1 = new SubWidget(‘foo’);</p>
+<p>var sub2 = new SubWidget(‘bar’);</p>
+<p>sub1.messages.push(‘foo’);</p>
+<p>sub2.messages.push(‘bar’);</p>
+<p>console.log(sub1.messages);//foo</p>
+<p>console.log(sub2.messages);//bar</p>
+</blockquote>
+<p>13.Javascript原型-封装</p>
+<blockquote>
+<p>var Dialog = (function () {</p>
+<p>function Dialog() {</p>
+<p>}</p>
+<p>Dialog.prototype = {</p>
+<p>init: function () {</p>
+<p>console.log(“ok”);</p>
+<p>}</p>
+<p>};</p>
+<p>return Dialog;</p>
+<p>}());</p>
+<p>var d = new Dialog();</p>
+<p>d.init();//ok</p>
+</blockquote>
+<p>14.通过闭包修正函数的上下文（浏览器不支持解决方案）</p>
+<blockquote>
+<p>if (!(‘bind’ in Function.prototype)) {</p>
+<p>Function.prototype.bind = function () {</p>
+<p>var fn = this,</p>
+<p>context = arguments[0],</p>
+<p>args = Array.prototype.slice.call(arguments, 1);</p>
+<p>return function () {</p>
+<p>return fn.apply(context, args.concat(arguments));</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+</blockquote>
+<p>15.优化JavaScript的构造函数(new关键字的使用)</p>
+<blockquote>
+<p>方法一：</p>
+<p>function User(name, age) {</p>
+<p>if (typeof Object.create === ‘undefined’) {</p>
+<p>Object.create = function (prototype) {</p>
+<p>function C() {</p>
+<p>C.prototype = prototype;</p>
+<p>return new C();</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>var self = this instanceof User ? this : Object.create(User.prototype);</p>
+<p>self.name = name;</p>
+<p>self.age = age;</p>
+<p>return self;</p>
+<p>}</p>
+<p>方法二：</p>
+<p>function Programmer(name, company, expertise) {</p>
+<p>if (!(this instanceof Programmer)) {</p>
+<p>return new Programmer(name, company, expertise);</p>
+<p>}</p>
+<p>this.name = name;</p>
+<p>this.company = company;</p>
+<p>this.expertise = expertise;</p>
+<p>this.writeCode = function () {</p>
+<p>console.log(“Writing some public static thing..”)</p>
+<p>}</p>
+<p>}</p>
+</blockquote>
+<p>16.柯里化</p>
+<blockquote>
+<p>var curry = function (fn) {</p>
+<p>var limit = fn.length;</p>
+<p>return function judgeCurry(…args) {</p>
+<p>return function (…args) {</p>
+<p>if (args.length &gt;= limit) {</p>
+<p>return fn.apply(null, args);</p>
+<p>} else {</p>
+<p>return function (…args2) {</p>
+<p>return judgeCurry.apply(null, args.concat(args2))</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>}</p>
+<p>};</p>
+<p>var currySingle = fn =&gt; judgeCurry = (…args) =&gt; args.length &gt;= fn.length ? fn.apply(null, args) : (…args2) =&gt; judgeCurry.apply(null, args.concat(args2));</p>
+</blockquote>
+<p>17.对象拷贝与赋值</p>
+<blockquote>
+<p>var obj = {</p>
+<p>name: ‘xiaoming’,</p>
+<p>age: 23</p>
+<p>};</p>
+<p>var newObj = obj;</p>
+<p>newObj.name = ‘xiaohua’;</p>
+<p>console.log(obj.name);//xiaohua</p>
+<p>console.log(newObj.name);//xiaohua</p>
+</blockquote>
+<p>我们将obj对象赋值给了newObj对象，从而改变newObj的name属性，但是obj对象的name属性也被篡改，这是因为实际上newObj对象获得的只是一个内存地址，而不是真正的拷贝，所以obj对象被篡改。</p>
+<blockquote>
+<p>var obj = {</p>
+<p>name: ‘xiaoming’,</p>
+<p>age: 23</p>
+<p>};</p>
+<p>var newObj = Object.assign({}, obj, {color: ‘blue’});</p>
+<p>newObj.name = ‘xiaohua’;</p>
+<p>console.log(obj.name);//xiaoming</p>
+<p>console.log(newObj.name);//xiaohua</p>
+<p>console.log(newObj.color);//blue</p>
+</blockquote>
+<p>18.拷贝</p>
+<p>利用Object.assign()方法进行对象的深拷贝可以避免源对象被篡改的可能。因为Object.assign()方法可以把任意多个的源对象自身的可枚举属性拷贝给目标对象，然后返回目标对象。</p>
+<blockquote>
+<p>var obj = {</p>
+<p>name: ‘xiaoming’,</p>
+<p>age: 23</p>
+<p>};</p>
+<p>var newObj = Object.create(obj);</p>
+<p>newObj.name = ‘xiaohua’;</p>
+<p>console.log(obj.name);//xiaoming</p>
+<p>console.log(newObj.name);//xiaohua</p>
+</blockquote>
+<p>我们也可以使用Object.create()方法进行对象的拷贝，Object.create()方法可以创建一个具有指定原型对象和属性的新对象。</p>
+<p>19.设置等高的列</p>
+<blockquote>
+<div class="equalHeight" style="border: 1px solid"><br><br><p>First Line</p><br><br><p>Second Line</p><br><br><p>Third Line</p><br><br></div>
+
+<div class="equalHeight" style="border: 1px solid"><br><br><p>Column Two</p><br><br></div>
+</blockquote>
+<blockquote>
+<p>$(function () {</p>
+<p>equalHeight(“.equalHeight”);</p>
+<p>});</p>
+<p>var maxHeight = 0;</p>
+<p>function equalHeight(col) {</p>
+<p>col = $(col);</p>
+<p>col.each(function () {</p>
+<p>if ($(this).height() &gt; maxHeight) {</p>
+<p>maxHeight = $(this).height()</p>
+<p>}</p>
+<p>});</p>
+<p>col.height(maxHeight);</p>
+<p>}</p>
+</blockquote>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        完
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  <div class="article-nav-block">
+    
+      <a href="/2017/06/30/IDEA配置git/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption"></strong>
+        <div class="article-nav-title">
+          
+            IDEA配置git
+          
+        </div>
+      </a>
+    
+  </div>
+  <div class="article-nav-block">
+    
+      <a href="/2017/06/17/做动效？这75款动效工具让你无所不能（上）/" id="article-nav-older" class="article-nav-link-wrap">
+        <div class="article-nav-title">这75款动效工具让你无所不能</div>
+        <strong class="article-nav-caption"></strong>
+      </a>
+    
+  </div>
+</nav>
+
+    
+<div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  owner: '',
+  repo: '',
+  oauth: {
+    client_id: '',
+    client_secret: '',
+  },
+})
+gitment.render('gitmentContainer')
+</script>
+
+  
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    <div class="widget-box">
+  <div class="avatar-box">
+    <img class="avatar" src="/images/default-avatar.jpeg" title="图片来自网络">
+    <h3 class="avatar-name">
+      
+        一路烟霞
+      
+    </h3>
+    <p class="avatar-slogan">
+      特别耐撕的小前端，资深的打酱油攻城狮。
+    </p>
+  </div>
+</div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Configuration/">Configuration</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Programming/">Programming</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Tools-config-windows/">Tools, config, windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Windows/">Windows</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/css/编程/">编程</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css/">前端, css</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-干货/">前端, css, 干货</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-编程/">前端, css, 编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-编程-js/">前端, css, 编程, js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-编程/">前端, 编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-css-编程/">前端,css,编程</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端-js/">前端,js</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/css/">css</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/工具/css/前端/">前端</a></li></ul></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/开源/">开源</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/技术/">技术</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技术/编程/">编程</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数码/">数码</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数码/技术/">技术</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/爱情句子/">爱情句子</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/生活/">生活</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/">编程</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/前端/">前端</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/编程/前端/跨域/">跨域</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程/算法/">算法</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/编程-前端/">编程, 前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/设计/">设计</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/面试/">面试</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/面试/编程/">编程</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Config/">Config</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Html/">Html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Programming/">Programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tools/">Tools</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Windows/">Windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html/">html</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/windows/">windows</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/云计算/">云计算</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/人际关系/">人际关系</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/优化/">优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端/">前端</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/句子/">句子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/干货/">干货</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开源/">开源</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/情商/">情商</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/手机/">手机</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技巧/">技巧</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/技术/">技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作/">操作</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/操作系统/">操作系统</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数码/">数码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/框架/">框架</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/爱情/">爱情</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/电脑/">电脑</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/算法/">算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/美化/">美化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计/">设计</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/面试/">面试</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Config/" style="font-size: 18px;">Config</a> <a href="/tags/Html/" style="font-size: 10px;">Html</a> <a href="/tags/JavaScript/" style="font-size: 11px;">JavaScript</a> <a href="/tags/Linux/" style="font-size: 11px;">Linux</a> <a href="/tags/Programming/" style="font-size: 14px;">Programming</a> <a href="/tags/Tools/" style="font-size: 10px;">Tools</a> <a href="/tags/Windows/" style="font-size: 15px;">Windows</a> <a href="/tags/css/" style="font-size: 17px;">css</a> <a href="/tags/html/" style="font-size: 11px;">html</a> <a href="/tags/js/" style="font-size: 16px;">js</a> <a href="/tags/linux/" style="font-size: 11px;">linux</a> <a href="/tags/windows/" style="font-size: 10px;">windows</a> <a href="/tags/云计算/" style="font-size: 10px;">云计算</a> <a href="/tags/人际关系/" style="font-size: 10px;">人际关系</a> <a href="/tags/优化/" style="font-size: 11px;">优化</a> <a href="/tags/前端/" style="font-size: 20px;">前端</a> <a href="/tags/句子/" style="font-size: 10px;">句子</a> <a href="/tags/工具/" style="font-size: 11px;">工具</a> <a href="/tags/干货/" style="font-size: 10px;">干货</a> <a href="/tags/开源/" style="font-size: 10px;">开源</a> <a href="/tags/情商/" style="font-size: 10px;">情商</a> <a href="/tags/手机/" style="font-size: 10px;">手机</a> <a href="/tags/技巧/" style="font-size: 11px;">技巧</a> <a href="/tags/技术/" style="font-size: 12px;">技术</a> <a href="/tags/操作/" style="font-size: 10px;">操作</a> <a href="/tags/操作系统/" style="font-size: 11px;">操作系统</a> <a href="/tags/数码/" style="font-size: 10px;">数码</a> <a href="/tags/框架/" style="font-size: 10px;">框架</a> <a href="/tags/爱情/" style="font-size: 10px;">爱情</a> <a href="/tags/电脑/" style="font-size: 12px;">电脑</a> <a href="/tags/算法/" style="font-size: 11px;">算法</a> <a href="/tags/编程/" style="font-size: 19px;">编程</a> <a href="/tags/美化/" style="font-size: 10px;">美化</a> <a href="/tags/设计/" style="font-size: 13px;">设计</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">一月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">二月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">十二月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">十一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">十月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">九月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">八月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">七月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">六月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">五月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">一月 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-box">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/04/07/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/21/2016年BAT公司常见的Web前端面试题整理/">2016年BAT公司常见的Web前端面试题整理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/01/08/安装 Kali Linux 后需要做的 20 件事/">安装 Kali Linux 后需要做的 20 件事</a>
+          </li>
+        
+          <li>
+            <a href="/2018/02/27/jquery中的ajax方法参数总是记不住，这里记录一下/">jQuery ajax方法</a>
+          </li>
+        
+          <li>
+            <a href="/2017/12/29/cloudsim配置/">cloudsim 配置</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+      </div>
+      <footer id="footer">
+  <div class="foot-box global-width">
+    &copy; 2019 yinlin &nbsp;&nbsp;
+    驱动于 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    &nbsp;|&nbsp;主题 <a href="https://github.com/yiluyanxia/hexo-theme-antiquity">antiquity</a>
+    <br>
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span id="busuanzi_container_site_pv">阁下是第<span id="busuanzi_value_site_pv"></span>个访客</span>
+  </div>
+</footer>
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+    </div>
+    <nav id="mobile-nav" class="mobile-nav-box">
+  <div class="mobile-nav-img mobile-nav-top"></div>
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+  <div class="mobile-nav-img  mobile-nav-bottom"></div>
+</nav>    
+  </div>
+</body>
+</html>
